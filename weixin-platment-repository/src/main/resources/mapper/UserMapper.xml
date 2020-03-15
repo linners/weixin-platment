@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.bulter.wxplatement.repository.mysql.dao.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.lin.bulter.wxplatement.repository.mysql.entity.User">
+        <!--
+          WARNING - @generated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="pass_word" property="passWord"/>
+        
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, user_name, pass_word 
+    </sql>
+
+    <!-- 新增 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.lin.bulter.wxplatement.repository.mysql.entity.User">
+        <!--
+          WARNING - @generated
+        -->
+        insert into t_user (
+          id, user_name, pass_word  )
+        values (
+          #{id}, #{userName}, #{passWord}  )
+    </insert>
+
+    <!-- 按条件修改 -->
+    <update id="updateByPrimaryKeySelective" parameterType="com.lin.bulter.wxplatement.repository.mysql.entity.User">
+        <!--
+          WARNING - @generated
+        -->
+        update t_user
+        <set>
+          <if test="userName != null">
+            user_name = #{userName},
+          </if>
+          <if test="passWord != null">
+            pass_word = #{passWord}
+          </if>
+          
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 按主键删除 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+          WARNING - @generated
+        -->
+        delete from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 按主键查询 -->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+          WARNING - @generated
+        -->
+        select 
+          <include refid="Base_Column_List" />
+        from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 查询所有 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <!--
+          WARNING - @generated
+        -->
+        select 
+          <include refid="Base_Column_List" />
+        from t_user
+    </select>
+</mapper>

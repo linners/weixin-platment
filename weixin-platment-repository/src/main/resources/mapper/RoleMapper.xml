@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.bulter.wxplatement.repository.mysql.dao.RoleMapper">
+
+    <resultMap id="BaseResultMap" type="com.lin.bulter.wxplatement.repository.mysql.entity.Role">
+        <!--
+          WARNING - @generated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="id" property="id"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_desc" property="roleDesc"/>
+        <result column="f_group_id" property="fGroupId"/>
+        <result column="c_t" property="cT"/>
+        <result column="u_t" property="uT"/>
+        
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, role_name, role_desc, f_group_id, c_t, u_t 
+    </sql>
+
+    <!-- 新增 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.lin.bulter.wxplatement.repository.mysql.entity.Role">
+        <!--
+          WARNING - @generated
+        -->
+        insert into t_role (
+          id, role_name, role_desc, f_group_id, c_t, u_t  )
+        values (
+          #{id}, #{roleName}, #{roleDesc}, #{fGroupId}, #{cT}, #{uT}  )
+    </insert>
+
+    <!-- 按条件修改 -->
+    <update id="updateByPrimaryKeySelective" parameterType="com.lin.bulter.wxplatement.repository.mysql.entity.Role">
+        <!--
+          WARNING - @generated
+        -->
+        update t_role
+        <set>
+          <if test="roleName != null">
+            role_name = #{roleName},
+          </if>
+          <if test="roleDesc != null">
+            role_desc = #{roleDesc},
+          </if>
+          <if test="fGroupId != null">
+            f_group_id = #{fGroupId},
+          </if>
+          <if test="cT != null">
+            c_t = #{cT},
+          </if>
+          <if test="uT != null">
+            u_t = #{uT}
+          </if>
+          
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 按主键删除 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+          WARNING - @generated
+        -->
+        delete from t_role
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 按主键查询 -->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+          WARNING - @generated
+        -->
+        select 
+          <include refid="Base_Column_List" />
+        from t_role
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 查询所有 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <!--
+          WARNING - @generated
+        -->
+        select 
+          <include refid="Base_Column_List" />
+        from t_role
+    </select>
+</mapper>

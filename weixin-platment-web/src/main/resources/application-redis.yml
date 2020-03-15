@@ -1,0 +1,16 @@
+spring:
+  redis:
+    host: 49.233.139.161
+    port: 5702
+    password: Lin*^37aa
+    database: 0
+    jedis:
+      pool:
+        max-idle: 300
+        max-wait:
+        min-idle: 20
+
+      #哨兵的配置列表
+      #sentinel:
+      #master: master
+    #nodes: 192.168.25.40:8378,192.168.25.40:8379

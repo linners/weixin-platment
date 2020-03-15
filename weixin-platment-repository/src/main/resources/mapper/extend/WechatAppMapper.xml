@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.bulter.wxplatement.repository.mysql.dao.WechatAppMapper">
+
+    <!-- 分页查询 -->
+    <select id="selectByCondition" resultMap="BaseResultMap">
+      select
+        <include refid="Base_Column_List" />
+      from
+        wechat_app
+      <where>
+        <if test="param.id != null">
+            id = #{param.id}
+        </if>
+        <if test="param.appType != null">
+            app_type = #{param.appType}
+        </if>
+        <if test="param.appId != null">
+            app_id = #{param.appId}
+        </if>
+        <if test="param.appSecret != null">
+            app_secret = #{param.appSecret}
+        </if>
+        <if test="param.appToken != null">
+            app_token = #{param.appToken}
+        </if>
+        <if test="param.appDesc != null">
+            app_desc = #{param.appDesc}
+        </if>
+        <if test="param.status != null">
+            status = #{param.status}
+        </if>
+        <if test="param.cT != null">
+            c_t = #{param.cT}
+        </if>
+        <if test="param.uT != null">
+            u_t = #{param.uT}
+        </if>
+        
+      </where>
+    </select>
+</mapper>

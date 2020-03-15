@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.bulter.wxplatement.repository.mysql.dao.WechatAppMapper">
+
+    <resultMap id="BaseResultMap" type="com.lin.bulter.wxplatement.repository.mysql.entity.WechatApp">
+        <!--
+          WARNING - @generated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="id" property="id"/>
+        <result column="app_type" property="appType"/>
+        <result column="app_id" property="appId"/>
+        <result column="app_secret" property="appSecret"/>
+        <result column="app_token" property="appToken"/>
+        <result column="app_desc" property="appDesc"/>
+        <result column="status" property="status"/>
+        <result column="c_t" property="cT"/>
+        <result column="u_t" property="uT"/>
+        
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, app_type, app_id, app_secret, app_token, app_desc, status, c_t, u_t 
+    </sql>
+
+    <!-- 新增 -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.lin.bulter.wxplatement.repository.mysql.entity.WechatApp">
+        <!--
+          WARNING - @generated
+        -->
+        insert into wechat_app (
+          id, app_type, app_id, app_secret, app_token, app_desc, status, c_t, u_t  )
+        values (
+          #{id}, #{appType}, #{appId}, #{appSecret}, #{appToken}, #{appDesc}, #{status}, #{cT}, #{uT}  )
+    </insert>
+
+    <!-- 按条件修改 -->
+    <update id="updateByPrimaryKeySelective" parameterType="com.lin.bulter.wxplatement.repository.mysql.entity.WechatApp">
+        <!--
+          WARNING - @generated
+        -->
+        update wechat_app
+        <set>
+          <if test="appType != null">
+            app_type = #{appType},
+          </if>
+          <if test="appId != null">
+            app_id = #{appId},
+          </if>
+          <if test="appSecret != null">
+            app_secret = #{appSecret},
+          </if>
+          <if test="appToken != null">
+            app_token = #{appToken},
+          </if>
+          <if test="appDesc != null">
+            app_desc = #{appDesc},
+          </if>
+          <if test="status != null">
+            status = #{status},
+          </if>
+          <if test="cT != null">
+            c_t = #{cT},
+          </if>
+          <if test="uT != null">
+            u_t = #{uT}
+          </if>
+          
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 按主键删除 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+          WARNING - @generated
+        -->
+        delete from wechat_app
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <!-- 按主键查询 -->
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+          WARNING - @generated
+        -->
+        select 
+          <include refid="Base_Column_List" />
+        from wechat_app
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <!-- 查询所有 -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <!--
+          WARNING - @generated
+        -->
+        select 
+          <include refid="Base_Column_List" />
+        from wechat_app
+    </select>
+</mapper>

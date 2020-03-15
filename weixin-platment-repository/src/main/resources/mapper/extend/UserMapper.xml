@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lin.bulter.wxplatement.repository.mysql.dao.UserMapper">
+
+    <!-- 分页查询 -->
+    <select id="selectByCondition" resultMap="BaseResultMap">
+      select
+        <include refid="Base_Column_List" />
+      from
+        t_user
+      <where>
+        <if test="param.id != null">
+            id = #{param.id}
+        </if>
+        <if test="param.userName != null">
+            user_name = #{param.userName}
+        </if>
+        <if test="param.passWord != null">
+            pass_word = #{param.passWord}
+        </if>
+        
+      </where>
+    </select>
+</mapper>
